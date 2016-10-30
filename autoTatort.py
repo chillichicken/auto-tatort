@@ -7,6 +7,8 @@ from urllib import urlopen, urlretrieve
 import json
 import os.path
 import re
+import distutils.spawn
+import subprocess
 
 #Wrap sysout so we don't run into problems when printing unicode characters to the console.
 #This would otherwise be a problem when we are invoked on Debian using cron: 
@@ -243,13 +245,21 @@ for feed in myConfig["feeds"]:
             offset = media["_subtitleOffset"]
 
           subtitleURL = media["_subtitleUrl"]
-          
-          urlretrieve(subtitleURL, targetDir + fileName + "_subtitleOffset_" + str(offset) + ".xml")
+          subtitleFileName = targetDir + fileName + "_subtitleOffset_" + str(offset) + ".xml"
+          urlretrieve(subtitleURL, subtitleFileName)
           if response.getcode() >= 400:
-             print subtitleURL
-             print "Could not get the subtitles for item with title '" + title + "'. Status code is " + response.getcode()
-             continue
-
+            print subtitleURL
+            print "Could not get the subtitles for item with title '" + title + "'. Status code is " + response.getcode()
+            continue
+          else:
+            #check if subtitle converter is present
+            if distutils.spawn.find_executable("ttaf2srt.py"):
+              cmd = ["ttaf2srt.py", subtitleFileName]
+              srtFile = open(targetDir + fileName + ".srt","wb")
+              try:
+                subprocess.call(cmd,stdout=srtFile)
+              finally:
+                srtFile.close()
       except Exception as e:
         #print and resume with download
         print e
@@ -258,6 +268,3 @@ for feed in myConfig["feeds"]:
     #check whether we download something
     if downloadedSomething == 0:
       print "Could not download '" + title + "' because of an error or nothing matching your quality selection"
-
-
-
