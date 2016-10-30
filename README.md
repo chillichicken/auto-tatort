@@ -63,6 +63,8 @@ from urllib import urlopen, urlretrieve
 import json  
 import os.path  
 import re  
+import distutils.spawn  
+import subprocess  
 
 Wurde nicht mit Python3 getestet, sollte aber vorher mit dem 2to3 Tool konvertiert werden!
 
