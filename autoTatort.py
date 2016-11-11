@@ -254,12 +254,15 @@ for feed in myConfig["feeds"]:
           else:
             #check if subtitle converter is present
             if distutils.spawn.find_executable("ttaf2srt.py"):
+              debug("Converting subtitle xml to srt file")
               cmd = ["ttaf2srt.py", subtitleFileName]
               srtFile = open(targetDir + fileName + ".srt","wb")
               try:
                 subprocess.call(cmd,stdout=srtFile)
               finally:
                 srtFile.close()
+            else:
+              debug("ttaf2srt.py not found in the path")
       except Exception as e:
         #print and resume with download
         print e
