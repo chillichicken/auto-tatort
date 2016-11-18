@@ -26,6 +26,10 @@ Die meisten oder alle Tatortfolgen scheinen auch Untertitel zu enthalten. Diese 
 Wird dieser im PATH gefunden, wird das XML automatisch ins SRT-Format umgewandelt und mit dem gleichen Filenamen wie das mp4 und Endung ".srt" abgelegt. Dabei ist zu beachten, dass die Untertitel im UTF8 Format abgelegt werden. Manche Player erkennen das nicht automatisch und brauchen extra Optionen. Zb bei mplayer: "-subcp utf8"
 Das originale XML-File wird danach nicht geloescht, damit man bei Fehlern im Konverter spaeter noch eine Chance hat ein korrektes SRT-File zu generieren.
 Wenn keine Untertitel gewuenscht sind, kann man das entsprechend in der Config anpassen.
+  
+Wenn man Cron benutzt, sollte man darauf achten, dass der Pfad auch das ttaf2srt Script beinhaltet. Cron setzt diesen anders als bei einem Shell-Login des Users zu dem die crontab gehoert! Eine Moeglichkeit das zu beeinflussen: https://stackoverflow.com/questions/10129381/crontab-path-and-user  
+Bei Ablage des Konverters in /home/autotatort/bin also zb: PATH=/home/autotatort/bin:/usr/local/bin:/usr/bin:/bin
+
 
 Config
 ======
