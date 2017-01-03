@@ -64,6 +64,12 @@ import re
 
 Wurde nicht mit Python3 getestet, sollte aber vorher mit dem 2to3 Tool konvertiert werden!
 
+Installation of feedparser
+==========================
+
+sudo apt-get install python-feedparser
+
+
 Credits
 =======
 Author: Felix Knecht  

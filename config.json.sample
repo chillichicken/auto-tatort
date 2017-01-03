@@ -1,5 +1,5 @@
 {
-    "debug": 0,
+    "debug": 1,
     "debugFile": "/data/tatort/debug.log",
     "feeds": [
         {
@@ -41,6 +41,17 @@
                 },
                 {
                     "replace": " (Video tgl. ab 20 Uhr)"
+                },
+                {
+                    "replace": "ü"
+                }
+                ,
+                {
+                    "replace": "ä"
+                }
+                ,
+                {
+                    "replace": "ö"
                 }
             ],
             "titlePrependItemDate": 0
@@ -84,6 +95,17 @@
                 },
                 {
                     "replace": " (Video tgl. ab 20 Uhr)"
+                },
+                {
+                    "replace": "ü"
+                }
+            ,
+                {
+                    "replace": "ä"
+                }
+            ,
+                {
+                    "replace": "ö"
                 }
             ],
             "titlePrependItemDate": 0
