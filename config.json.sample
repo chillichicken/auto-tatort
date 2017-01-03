@@ -4,6 +4,49 @@
     "feeds": [
         {
             "enabled": 1,
+            "id": "Polizeiruf",
+            "quality": -1,
+            "subtitles": 1,
+            "targetFolder": "/data/tatort/",
+            "url": "http://www.ardmediathek.de/tv/Polizeiruf-110/Sendung?documentId=1933890&rss=true",
+            "exclude": [
+                {
+                    "regexp": ".*H.rfassung.*"
+                },
+                {
+                    "regexp": ".*Livestream.*"
+                },
+                {
+                    "regexp": ".*Drehbericht zu.*"
+                },
+                {
+                    "regexp": ".*TV-Trailer.*"
+                },
+                {
+                    "regexp": ".*XL-Vorschau.*"
+                },
+                {
+                    "regexp": ".*Die Klassiker:.*"
+                },
+                {
+                    "regexp": ".*Making.[oO]f.*"
+                },
+                {
+                    "regexp": ".*Tatort - Extra:.*"
+                }
+            ],
+            "titleFilters": [
+                {
+                    "replace": " (Video tgl. ab 22 Uhr)"
+                },
+                {
+                    "replace": " (Video tgl. ab 20 Uhr)"
+                }
+            ],
+            "titlePrependItemDate": 0
+        },
+        {
+            "enabled": 1,
             "id": "Tatort",
             "quality": -1,
             "subtitles": 1,
